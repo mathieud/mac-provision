@@ -39,7 +39,7 @@ if [[ ! -x /usr/local/bin/ansible ]]; then
 fi
 
 # Clone repository
-if [[ ! -d SRC_DIRECTORY ]]; then
+if [[ ! -d $SRC_DIRECTORY ]]; then
     mkdir -p $SRC_DIRECTORY
     git clone git@github.com:mathieud/mac-provision.git $SRC_DIRECTORY
 else

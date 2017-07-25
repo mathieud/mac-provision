@@ -40,17 +40,13 @@ fi
 
 # Clone repository
 if [[ ! -x SRC_DIRECTORY ]]; then
+    mkdir -p $SRC_DIRECTORY
     git clone git@github.com:mathieud/mac-provision.git $SRC_DIRECTORY
+else
+    cd $SRC_DIRECTORY
+    git pull
+    cd -
 fi
-
-
-
-# Make the code directory
-mkdir -p $SRC_DIRECTORY
-
-# FIX ANSIBLE PERMISSIONS
-chmod -R 750 $SRC_DIRECTORY
-chmod -R 660 $ANSIBLE_DIRECTORY/inventories/*
 
 # Provision the box
 # ansible-playbook -i $ANSIBLE_DIRECTORY/inventories/osx.ini $ANSIBLE_DIRECTORY/playbook.yml --connection=local
